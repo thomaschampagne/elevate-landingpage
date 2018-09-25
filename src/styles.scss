@@ -1,0 +1,55 @@
+@import "~@angular/material/theming";
+
+@mixin native-web-elements($theme) {
+	$accent: map-get($theme, accent);
+	a {
+		color: mat-color($accent);
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+$base-style-config: mat-typography-config(); // Create a config with the default typography levels.
+$app-style-config: mat-typography-config(// Define a typography config that will override the base typo
+	$font-family: "GlacialIndifferenceRegular, Helvetica",
+	$headline: mat-typography-level(
+			mat-font-size($base-style-config, headline),
+			mat-line-height($base-style-config, headline),
+			300),
+	$title: mat-typography-level(
+			mat-font-size($base-style-config, title),
+			mat-line-height($base-style-config, title),
+			300),
+	$subheading-2: mat-typography-level(
+			mat-font-size($base-style-config, subheading-2),
+			mat-line-height($base-style-config, subheading-2),
+			300),
+	$button: mat-typography-level(
+			mat-font-size($base-style-config, button),
+			mat-line-height($base-style-config, button),
+			300),
+	$caption: mat-typography-level(
+			mat-font-size($base-style-config, caption),
+			mat-line-height($base-style-config, caption),
+			300)
+);
+
+@include mat-base-typography($app-style-config); // Override typography CSS classes (e.g., mat-h1, mat-display-1, etc.).
+@include mat-checkbox-typography($app-style-config); // Override typography for a specific Angular Material components.
+@include angular-material-typography($app-style-config); // Override typography for all Angular Material, including mat-base-typography and all components.
+@include mat-core($app-style-config); // Override the typography in the core CSS.
+
+$primary: mat-palette($mat-yellow);
+$accent: mat-palette($mat-yellow, 600);
+$theme: mat-dark-theme($primary, $accent);
+
+html, body, mat-dialog-container {
+	margin: 0;
+	width: auto;
+	height: 100%;
+	background-color: black;
+	@include angular-material-theme($theme);
+	@include native-web-elements($theme);
+}

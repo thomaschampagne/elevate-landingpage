@@ -67,15 +67,15 @@ $black-film-opacity: 0.25;
 
 	@media screen and (orientation: landscape) {
 		min-height: 50%;
-		img {
-			min-height: 35vh;
+		object {
+			height: 40vh;
 		}
 	}
 
 	@media screen and (orientation: portrait) {
 		min-height: 45%;
-		img {
-			min-height: 25vh;
+		object {
+			height: 45vw;
 		}
 	}
 }

@@ -10,6 +10,12 @@ import { PathLocationStrategy } from "@angular/common";
 })
 export class AppComponent implements OnInit {
 
+	constructor(public iconRegistry: MatIconRegistry,
+				public sanitizer: DomSanitizer,
+				public pathLocationStrategy: PathLocationStrategy,
+				public dialog: MatDialog) {
+	}
+
 	public static readonly ELEVATE_WEBSITE = "https://thomaschampagne.github.io/elevate/";
 	public static readonly ICONS_REGISTERED = ["twitter", "facebook", "github", "chrome", "opera", "firefox"];
 	public static readonly OLD_WEBSITE_BASE_HREF: string = "/stravistix/";
@@ -19,9 +25,9 @@ export class AppComponent implements OnInit {
 	public readonly CURRENCIES: string [] = ["AUD", "BRL", "CAD", "CHF", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "ILS", "JPY", "MXN", "NOK", "NZD", "PHP", "PLN", "RUB", "SEK", "SGD", "THB", "TWD", "USD"];
 
 	public platform: string = null;
-	public showOperaInstallSteps: boolean = false;
+	public showOperaInstallSteps = false;
 	public isForward: boolean = null;
-	public forwardCountDown: number = 9;
+	public forwardCountDown = 9;
 
 	@ViewChild("fitnessTrend")
 	public fitnessTrendElement: ElementRef;
@@ -35,11 +41,8 @@ export class AppComponent implements OnInit {
 	@ViewChild("operaInstall")
 	public operaInstallElement: ElementRef;
 
-	constructor(public iconRegistry: MatIconRegistry,
-				public sanitizer: DomSanitizer,
-				public pathLocationStrategy: PathLocationStrategy,
-				public dialog: MatDialog) {
-	}
+	@ViewChild("firefoxNoteDialog")
+	public firefoxNoteDialog: TemplateRef<this>;
 
 	public ngOnInit(): void {
 
@@ -120,9 +123,6 @@ export class AppComponent implements OnInit {
 		this.showOperaInstallSteps = true;
 		setTimeout(() => this.goToElement(this.operaInstallElement));
 	}
-
-	@ViewChild("firefoxNoteDialog")
-	public firefoxNoteDialog: TemplateRef<this>;
 
 	public onFirefoxDownloadClicked(): void {
 		this.dialog.open(this.firefoxNoteDialog, {

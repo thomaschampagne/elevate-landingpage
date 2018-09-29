@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
 	}
 
 	public onFacebookClicked(): void {
-		this.openUrl("https://www.facebook.com/elevateforstrava");
+		this.openUrl("https://www.facebook.com/elevatestrava");
 	}
 
 	public onGithubClicked(): void {

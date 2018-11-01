@@ -133,6 +133,7 @@ $black-film-opacity: 0.25;
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.75);
+	cursor: pointer;
 
 	@media screen and (orientation: landscape) {
 		height: $landscapeHeight;

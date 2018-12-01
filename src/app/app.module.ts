@@ -8,12 +8,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { LandingComponent } from "./landing/landing.component";
 import { OldLandingComponent } from "./old-landing/old-landing.component";
+import { CIBuildsComponent } from "./cibuilds/cibuilds.component";
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LandingComponent,
-		OldLandingComponent
+		OldLandingComponent,
+		CIBuildsComponent
 	],
 	imports: [
 		BrowserAnimationsModule,
@@ -27,6 +29,9 @@ import { OldLandingComponent } from "./old-landing/old-landing.component";
 				},
 				{
 					path: "stravistix", component: OldLandingComponent
+				},
+				{
+					path: "builds", component: CIBuildsComponent
 				},
 				{
 					path: "",

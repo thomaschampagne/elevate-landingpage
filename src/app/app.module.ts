@@ -8,14 +8,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { LandingComponent } from "./landing/landing.component";
 import { OldLandingComponent } from "./old-landing/old-landing.component";
-import { CIBuildsComponent } from "./cibuilds/cibuilds.component";
+import { ContinuousIntegrationBuildsComponent } from "./continuous-integration-builds/continuous-integration-builds.component";
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LandingComponent,
 		OldLandingComponent,
-		CIBuildsComponent
+		ContinuousIntegrationBuildsComponent
 	],
 	imports: [
 		BrowserAnimationsModule,
@@ -31,7 +31,7 @@ import { CIBuildsComponent } from "./cibuilds/cibuilds.component";
 					path: "stravistix", component: OldLandingComponent
 				},
 				{
-					path: "builds", component: CIBuildsComponent
+					path: "builds", component: ContinuousIntegrationBuildsComponent
 				},
 				{
 					path: "",

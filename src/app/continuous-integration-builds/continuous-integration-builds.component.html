@@ -1,0 +1,63 @@
+<mat-card>
+	<mat-card-title>
+		10 last generated builds from Travis CI
+	</mat-card-title>
+	<mat-card-content>
+		<mat-table #table [dataSource]="dataSource" matSort>
+
+			<ng-container matColumnDef="date">
+				<mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.date | date: 'yyyy-M-dd hh:mm'}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="branch">
+				<mat-header-cell *matHeaderCellDef>Branch</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.branch}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="version">
+				<mat-header-cell *matHeaderCellDef>Version</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.version}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="channel">
+				<mat-header-cell *matHeaderCellDef>Channel</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.channel}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="commitShort">
+				<mat-header-cell *matHeaderCellDef>Commit</mat-header-cell>
+				<mat-cell *matCellDef="let build">
+					<button mat-button
+							(click)="onOpenUrl('https://github.com/thomaschampagne/elevate/commit/' + build.commitShort)">
+						{{build.commitShort}}
+					</button>
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="size">
+				<mat-header-cell *matHeaderCellDef>Size</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.size}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="downloadCount">
+				<mat-header-cell *matHeaderCellDef>Download count</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.downloadCount}}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="downloadLink">
+				<mat-header-cell *matHeaderCellDef>Download</mat-header-cell>
+				<mat-cell *matCellDef="let build">
+					<button mat-icon-button (click)="onOpenUrl(build.downloadLink)" matTooltip="Download">
+						<mat-icon>get_app</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+	</mat-card-content>
+</mat-card>
+
+
+

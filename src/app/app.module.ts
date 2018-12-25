@@ -42,7 +42,7 @@ const BUILDS_ROUTE = "builds";
 					redirectTo: LANDING_ROUTE,
 					pathMatch: "full"
 				},
-				{ path: "**", component: LandingComponent }
+				{path: "**", component: LandingComponent}
 			]
 		)
 	],

@@ -20,7 +20,6 @@ export class LandingComponent implements OnInit {
 	public readonly DEFAULT_DONATION_CURRENCY: string = "USD";
 	public readonly CURRENCIES: string [] = ["AUD", "BRL", "CAD", "CHF", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "ILS", "JPY", "MXN", "NOK", "NZD", "PHP", "PLN", "RUB", "SEK", "SGD", "THB", "TWD", "USD"];
 
-	public platform: string = null;
 	public showOperaInstallSteps = false;
 	public isForward: boolean = null;
 
@@ -40,8 +39,6 @@ export class LandingComponent implements OnInit {
 	public firefoxNoteDialog: TemplateRef<this>;
 
 	public ngOnInit(): void {
-
-		this.platform = window.navigator.platform;
 
 		LandingComponent.ICONS_REGISTERED.forEach((iconName: string) => {
 			this.iconRegistry.addSvgIcon(iconName, this.sanitizer.bypassSecurityTrustResourceUrl("./assets/icons/" + iconName + ".svg"));

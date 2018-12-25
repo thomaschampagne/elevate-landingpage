@@ -159,19 +159,10 @@
 					</mat-form-field>
 				</div>
 				<div>
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal"
-						  target="_blank">
-						<input type="hidden" name="business" value="th.champagne@gmail.com">
-						<input type="hidden" name="cmd" value="_donations">
-						<input type="hidden" name="item_name" value="Elevate for Strava Donation">
-						<input type="hidden" name="item_number" value="ext_page_donation">
-						<input type="hidden" name="amount" value="{{donateAmount.value}}">
-						<input type="hidden" name="on0" value="platform:{{platform}}">
-						<input type="hidden" name="currency_code" value="{{donateCurrency.value}}">
-						<button mat-stroked-button color="accent" type="submit" value="Submit" form="paypal">
-							Donate
-						</button>
-					</form>
+					<button mat-stroked-button color="primary"
+							(click)="openUrl('https://www.paypal.me/thomaschampagne/' + donateAmount.value + donateCurrency.value)">
+						Donate
+					</button>
 				</div>
 				<div class="donate-note">
 					<i>(No paypal account required)</i>

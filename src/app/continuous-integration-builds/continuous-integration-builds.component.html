@@ -4,6 +4,27 @@
 			Builds</a>
 	</mat-card-title>
 	<mat-card-content>
+		<mat-form-field>
+			<mat-select placeholder="Branch"
+						(selectionChange)="onSelectedBranchChange()"
+						[(ngModel)]="selectedBranch">
+				<mat-option>*</mat-option>
+				<mat-option *ngFor="let branch of allBranches" [value]="branch">
+					{{branch}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-select placeholder="Version"
+						(selectionChange)="onSelectedVersionChange()"
+						[(ngModel)]="selectedVersion">
+				<mat-option>*</mat-option>
+				<mat-option *ngFor="let version of allVersions" [value]="version">
+					{{version}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
 		<mat-table [dataSource]="dataSource" matSort>
 			<ng-container matColumnDef="date">
 				<mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
@@ -37,7 +58,7 @@
 
 			<ng-container matColumnDef="size">
 				<mat-header-cell *matHeaderCellDef>Size</mat-header-cell>
-				<mat-cell *matCellDef="let build">{{build.size}}</mat-cell>
+				<mat-cell *matCellDef="let build">{{build.size}} MB</mat-cell>
 			</ng-container>
 
 			<ng-container matColumnDef="downloadCount">

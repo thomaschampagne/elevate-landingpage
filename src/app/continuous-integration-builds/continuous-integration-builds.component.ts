@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import * as _ from "lodash";
 
@@ -78,7 +78,7 @@ class ElevateBuildModel {
 })
 export class ContinuousIntegrationBuildsComponent implements OnInit {
 
-	public static readonly CONTINUOUS_INTEGRATION_BUILDS_URL: string = "https://api.bitbucket.org/2.0/repositories/thomaschampagne/elevate-ci-builds/downloads";
+	public static readonly LAST_100_CI_BUILDS_URL: string = "https://api.bitbucket.org/2.0/repositories/thomaschampagne/elevate-ci-builds/downloads?pagelen=100";
 
 	public static readonly COLUMN_DATE: string = "date";
 	public static readonly COLUMN_BRANCH: string = "branch";
@@ -112,12 +112,21 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 	}
 
 	public ngOnInit(): void {
-
 		this.dataSource = new MatTableDataSource<ElevateBuildModel>();
-		this.httpClient.get(ContinuousIntegrationBuildsComponent.CONTINUOUS_INTEGRATION_BUILDS_URL).subscribe((response: BitBucketApi.Response) => {
+		this.dataSource.paginator = this.matPaginator;
+		this.dataSource.sort = this.matSort;
 
-			this.dataSource.data = this.generatedData(response);
+		const httpHeaders: HttpHeaders = new HttpHeaders({
+			"Content-Type": "application/json",
 		});
+
+		const subscription = this.httpClient.get(ContinuousIntegrationBuildsComponent.LAST_100_CI_BUILDS_URL,
+			{headers: httpHeaders}).subscribe((response: BitBucketApi.Response) => {
+			console.warn(response);
+			this.dataSource.data = this.generatedData(response);
+		}, error => {
+			alert(JSON.stringify(error));
+		}, () => subscription.unsubscribe());
 	}
 
 	public generatedData(bitBucketResponse: BitBucketApi.Response): ElevateBuildModel[] {

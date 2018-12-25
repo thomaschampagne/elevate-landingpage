@@ -10,6 +10,10 @@ import { LandingComponent } from "./landing/landing.component";
 import { OldLandingComponent } from "./old-landing/old-landing.component";
 import { ContinuousIntegrationBuildsComponent } from "./continuous-integration-builds/continuous-integration-builds.component";
 
+const LANDING_ROUTE = "landing";
+const OLD_LANDING_ROUTE = "stravistix";
+const BUILDS_ROUTE = "builds";
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -25,19 +29,20 @@ import { ContinuousIntegrationBuildsComponent } from "./continuous-integration-b
 		RouterModule.forRoot(
 			[
 				{
-					path: "landing", component: LandingComponent
+					path: LANDING_ROUTE, component: LandingComponent
 				},
 				{
-					path: "stravistix", component: OldLandingComponent
+					path: OLD_LANDING_ROUTE, component: OldLandingComponent
 				},
 				{
-					path: "builds", component: ContinuousIntegrationBuildsComponent
+					path: BUILDS_ROUTE, component: ContinuousIntegrationBuildsComponent
 				},
 				{
 					path: "",
-					redirectTo: "/landing",
+					redirectTo: LANDING_ROUTE,
 					pathMatch: "full"
-				}
+				},
+				{ path: "**", component: LandingComponent }
 			]
 		)
 	],

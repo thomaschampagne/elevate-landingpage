@@ -45,8 +45,7 @@ const BUILDS_ROUTE = "builds";
 					pathMatch: "full"
 				},
 				{path: "**", component: LandingComponent}
-			]
-		)
+			], {useHash: true})
 	],
 	providers: [],
 	bootstrap: [AppComponent]

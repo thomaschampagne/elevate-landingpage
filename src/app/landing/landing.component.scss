@@ -305,3 +305,9 @@ $black-film-opacity: 0.25;
 	font-family: "Roboto", sans-serif;
 	font-weight: 100;
 }
+
+.ci-builds {
+	@media screen and (orientation: portrait) {
+		display: none;
+	}
+}

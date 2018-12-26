@@ -6,6 +6,7 @@ import {
 	MatIconModule,
 	MatInputModule,
 	MatPaginatorModule,
+	MatProgressBarModule,
 	MatSelectModule,
 	MatSnackBarModule,
 	MatSortModule,
@@ -25,7 +26,7 @@ import { PathLocationStrategy } from "@angular/common";
 		MatSortModule,
 		MatSnackBarModule,
 		MatCardModule,
-		MatSelectModule
+		MatProgressBarModule
 	],
 	exports: [
 		MatIconModule,
@@ -38,7 +39,7 @@ import { PathLocationStrategy } from "@angular/common";
 		MatSortModule,
 		MatSnackBarModule,
 		MatCardModule,
-		MatSelectModule
+		MatProgressBarModule
 	],
 	providers: [
 		PathLocationStrategy

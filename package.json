@@ -6,7 +6,7 @@
 		"start": "ng serve --host=0.0.0.0 --disable-host-check --base-href /elevate/",
 		"start:legacy": "ng serve --host=0.0.0.0 --disable-host-check --base-href /stravistix/",
 		"build": "ng build --base-href /elevate/ --prod",
-		"build:legacy": "ng build --base-href /stravistix/",
+		"build:legacy": "ng build --base-href /stravistix/ --prod",
 		"test": "ng test",
 		"lint": "ng lint --fix",
 		"e2e": "ng e2e"

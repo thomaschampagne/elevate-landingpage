@@ -108,6 +108,8 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 	@ViewChild(MatSort)
 	public matSort: MatSort;
 
+	public isLoaded: boolean;
+
 	public selectedBranch: string;
 	public allBranches: string[];
 
@@ -116,6 +118,7 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 
 	constructor(public httpClient: HttpClient,
 				public snackBar: MatSnackBar) {
+		this.isLoaded = false;
 		this.allBranches = [];
 		this.allVersions = [];
 	}
@@ -126,6 +129,7 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 		this.dataSource.paginator = this.matPaginator;
 		this.dataSource.sort = this.matSort;
 
+		// Fetch from bitbucket api
 		const httpHeaders: HttpHeaders = new HttpHeaders({
 			"Content-Type": "application/json",
 		});
@@ -150,9 +154,16 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 			console.error(error);
 		}, () => subscription.unsubscribe());
 
+		// Listen for data source updated
+		this.dataSource.connect().subscribe(() => {
+			this.isLoaded = true;
+		});
+
+		// Setup builds filtering
 		this.dataSource.filterPredicate = (model: ElevateBuildModel, filter: string) => {
 			return ((model.branch + model.version).match(new RegExp(filter, "gi")) !== null);
 		};
+
 	}
 
 	public generatedData(bitBucketResponse: BitBucketApi.Response): ElevateBuildModel[] {

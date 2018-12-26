@@ -6,13 +6,16 @@ $black-film-opacity: 0.25;
 	background-size: cover;
 
 	@media screen and (orientation: landscape) {
-		background: url("../../assets/backgrounds/landing-image-landscape.jpg") no-repeat fixed center;
+		background-image: url("../../assets/backgrounds/landing-image-landscape.jpg");
 	}
 
 	@media screen and (orientation: portrait) {
-		background: url("../../assets/backgrounds/landing-image-portrait.jpg") no-repeat fixed center;
+		background-image: url("../../assets/backgrounds/landing-image-portrait.jpg");
 	}
 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
 	height: 100%;
 }
 

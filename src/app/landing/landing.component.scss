@@ -1,0 +1,313 @@
+$landscapeHeight: 5%;
+$portraitHeight: 8%;
+$black-film-opacity: 0.25;
+
+.parallax {
+	background-size: cover;
+
+	@media screen and (orientation: landscape) {
+		background: url("../../assets/backgrounds/landing-image-landscape.jpg") no-repeat fixed center;
+	}
+
+	@media screen and (orientation: portrait) {
+		background: url("../../assets/backgrounds/landing-image-portrait.jpg") no-repeat fixed center;
+	}
+
+	height: 100%;
+}
+
+.links {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-top: 1vw;
+	padding-right: 1.5vw;
+}
+
+.landing {
+
+	background-color: rgba(0, 0, 0, $black-film-opacity);
+
+	display: flex;
+	justify-content: center;
+
+	@media screen and (orientation: landscape) {
+		height: 100% - $landscapeHeight;
+	}
+
+	@media screen and (orientation: portrait) {
+		height: 100% - $portraitHeight;
+	}
+}
+
+.logo {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@media screen and (orientation: landscape) {
+		min-height: 50%;
+		object {
+			height: 40vh;
+		}
+	}
+
+	@media screen and (orientation: portrait) {
+		min-height: 45%;
+		object {
+			height: 45vw;
+		}
+	}
+}
+
+.tagline {
+
+	text-align: center;
+
+	@media screen and (orientation: landscape) {
+		margin-left: 3vh;
+		margin-right: 3vh;
+		font-size: 4vw;
+
+		img {
+			vertical-align: middle;
+			width: 14vw
+		}
+	}
+
+	@media screen and (orientation: portrait) {
+		margin-left: 10vw;
+		margin-right: 10vw;
+		font-size: 9vw;
+
+		img {
+			vertical-align: middle;
+			width: 34vw;
+		}
+	}
+}
+
+.downloadButton {
+
+	display: flex;
+	justify-content: center;
+
+	button {
+		font-size: 22px;
+		height: 50px;
+		width: 300px;
+
+		@media screen and (orientation: landscape) {
+			margin-top: 5vh;
+		}
+
+		@media screen and (orientation: portrait) {
+			margin-top: 10vh;
+		}
+	}
+}
+
+.next {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.75);
+	cursor: pointer;
+
+	@media screen and (orientation: landscape) {
+		height: $landscapeHeight;
+	}
+
+	@media screen and (orientation: portrait) {
+		height: $portraitHeight;
+	}
+
+}
+
+/*.slide, .slide-matrix, .slide-half {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}*/
+
+.slide {
+
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (orientation: landscape) {
+		min-height: 100% - $landscapeHeight;
+	}
+
+	@media screen and (orientation: portrait) {
+		min-height: 100% - $portraitHeight;
+	}
+
+}
+
+.slide-half {
+	min-height: 50%;
+}
+
+.slide-matrix-content {
+
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	@media screen and (orientation: landscape) {
+
+		flex-direction: row;
+
+		div {
+			display: flex;
+			align-items: center;
+			width: 49%;
+			padding: 0% 0.25% 0.5%;
+		}
+	}
+
+	@media screen and (orientation: portrait) {
+
+		flex-direction: column;
+
+		div {
+			width: 100%;
+			padding-bottom: 1%;
+		}
+	}
+}
+
+.slide-content-wrapper {
+
+	display: flex;
+	justify-content: flex-start;
+
+	@media screen and (orientation: landscape) {
+		flex-direction: row;
+	}
+
+	@media screen and (orientation: portrait) {
+		flex-direction: column;
+	}
+}
+
+.slide-title {
+
+	display: flex;
+	align-items: center;
+
+	@media screen and (orientation: landscape) {
+		margin: 1vw 3vh;
+		font-size: 2vw;
+		justify-content: start;
+	}
+
+	@media screen and (orientation: portrait) {
+		font-size: 6vw;
+		margin-top: 2vh;
+		margin-bottom: 1vh;
+		justify-content: center;
+	}
+
+}
+
+.slide-snap {
+
+	order: 0;
+	flex-shrink: 0;
+
+	@media screen and (orientation: landscape) {
+		width: 50%;
+	}
+
+	@media screen and (orientation: portrait) {
+		width: 100%;
+	}
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+.slide-content {
+
+	order: 1;
+	padding-left: 2vh;
+	padding-right: 2vh;
+
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (orientation: landscape) {
+		font-size: 1.5vw;
+	}
+
+	@media screen and (orientation: portrait) {
+		padding-top: 1vh;
+		height: 100%;
+	}
+
+}
+
+.donate {
+	button, mat-form-field {
+		width: 250px;
+	}
+}
+
+.donate-message {
+
+	@media screen and (orientation: landscape) {
+		margin-top: 2vh;
+		margin-bottom: 2vh;
+	}
+
+	@media screen and (orientation: portrait) {
+		margin-bottom: 2vh;
+	}
+
+}
+
+.donate-note {
+	margin-top: 1vh;
+	font-size: 14px;
+}
+
+.download {
+
+	margin-top: 5vh;
+
+	div {
+		margin-bottom: 4vh;
+	}
+
+	button {
+		width: 250px;
+	}
+}
+
+.operaInstall {
+	li {
+		list-style-type: decimal;
+	}
+}
+
+.firefoxNoteDialog {
+	font-family: "Roboto", sans-serif;
+	font-weight: 100;
+}
+
+.ci-builds {
+	@media screen and (orientation: portrait) {
+		display: none;
+	}
+}

@@ -1,0 +1,90 @@
+<mat-progress-bar *ngIf="!isLoaded" mode="indeterminate"></mat-progress-bar>
+<mat-card>
+	<mat-card-title>
+		<a href="https://travis-ci.org/thomaschampagne/elevate/builds" target="_blank">Travis Continuous Integration
+			Builds</a>
+	</mat-card-title>
+	<mat-card-content>
+		<mat-form-field>
+			<mat-select placeholder="Branch"
+						(selectionChange)="onSelectedBranchChange()"
+						[(ngModel)]="selectedBranch">
+				<mat-option>*</mat-option>
+				<mat-option *ngFor="let branch of allBranches" [value]="branch">
+					{{branch}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-select placeholder="Version"
+						(selectionChange)="onSelectedVersionChange()"
+						[(ngModel)]="selectedVersion">
+				<mat-option>*</mat-option>
+				<mat-option *ngFor="let version of allVersions" [value]="version">
+					{{version}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-table [dataSource]="dataSource" matSort>
+			<ng-container matColumnDef="date">
+				<mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.date | date:'medium'}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="branch">
+				<mat-header-cell *matHeaderCellDef>Branch</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.branch}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="version">
+				<mat-header-cell *matHeaderCellDef>Version</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.version}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="channel">
+				<mat-header-cell *matHeaderCellDef>Channel</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.channel}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="commitShort">
+				<mat-header-cell *matHeaderCellDef>Commit</mat-header-cell>
+				<mat-cell *matCellDef="let build">
+					<button mat-button
+							(click)="onOpenUrl('https://github.com/thomaschampagne/elevate/commit/' + build.commitShort)">
+						{{build.commitShort}}
+					</button>
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="size">
+				<mat-header-cell *matHeaderCellDef>Size</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.size}} MB</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="downloadCount">
+				<mat-header-cell *matHeaderCellDef>Download count</mat-header-cell>
+				<mat-cell *matCellDef="let build">{{build.downloadCount}}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="downloadLink">
+				<mat-header-cell *matHeaderCellDef>Download</mat-header-cell>
+				<mat-cell *matCellDef="let build">
+					<button mat-icon-button (click)="onOpenUrl(build.downloadLink)" matTooltip="Download">
+						<mat-icon color="primary">get_app</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+		<mat-paginator #paginator
+					   [pageSize]="10"
+					   color="primary"
+					   [pageSizeOptions]="[5, 10, 15, 25, 50]">
+		</mat-paginator>
+	</mat-card-content>
+</mat-card>
+
+
+

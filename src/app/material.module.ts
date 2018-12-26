@@ -1,5 +1,17 @@
 import { NgModule } from "@angular/core";
-import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatSelectModule } from "@angular/material";
+import {
+	MatButtonModule,
+	MatCardModule,
+	MatDialogModule,
+	MatIconModule,
+	MatInputModule,
+	MatPaginatorModule,
+	MatProgressBarModule,
+	MatSelectModule,
+	MatSnackBarModule,
+	MatSortModule,
+	MatTableModule
+} from "@angular/material";
 import { PathLocationStrategy } from "@angular/common";
 
 @NgModule({
@@ -8,14 +20,26 @@ import { PathLocationStrategy } from "@angular/common";
 		MatButtonModule,
 		MatSelectModule,
 		MatInputModule,
-		MatDialogModule
+		MatDialogModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatSnackBarModule,
+		MatCardModule,
+		MatProgressBarModule
 	],
 	exports: [
 		MatIconModule,
 		MatButtonModule,
 		MatSelectModule,
 		MatInputModule,
-		MatDialogModule
+		MatDialogModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatSnackBarModule,
+		MatCardModule,
+		MatProgressBarModule
 	],
 	providers: [
 		PathLocationStrategy

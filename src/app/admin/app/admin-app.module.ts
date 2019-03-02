@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { MaterialModule } from "../../material.module";
 
 import { AdminAppRoutingModule } from "./admin-app-routing.module";
 import { AdminAppComponent } from "./admin-app.component";
@@ -17,12 +16,13 @@ import { AudienceResolverService } from "./audience/audience-resolver.service";
 import { ProsComponent } from "./pros/pros.component";
 import { ProsResolverService } from "./pros/pros-resolver.service";
 import { AboutComponent } from "./about/about.component";
+import { SharedModule } from "../../modules/shared.module";
 
 @NgModule({
 	imports: [
 		CommonModule,
+		SharedModule,
 		AdminAppRoutingModule,
-		MaterialModule,
 		ChartsModule
 	],
 	declarations: [

@@ -1,20 +1,18 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MaterialModule } from "../material.module";
 import { AdminLoginComponent } from "./login/admin-login.component";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { AdminAppGuard } from "./app/admin-app.guard";
 import { AuthenticationService } from "./services/authentication.service";
 import { EndPointsService } from "./services/end-points.service";
-import { FormsModule } from "@angular/forms";
+import { SharedModule } from "../modules/shared.module";
 
 
 @NgModule({
 	imports: [
 		CommonModule,
-		MaterialModule,
-		AdminRoutingModule,
-		FormsModule
+		SharedModule,
+		AdminRoutingModule
 	],
 	declarations: [
 		AdminLoginComponent

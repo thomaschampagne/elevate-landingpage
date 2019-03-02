@@ -16,7 +16,6 @@ import {
 	MatTableModule,
 	MatToolbarModule
 } from "@angular/material";
-import { PathLocationStrategy } from "@angular/common";
 
 @NgModule({
 	imports: [
@@ -52,9 +51,6 @@ import { PathLocationStrategy } from "@angular/common";
 		MatToolbarModule,
 		MatSidenavModule,
 		MatListModule
-	],
-	providers: [
-		PathLocationStrategy
 	],
 	declarations: []
 })

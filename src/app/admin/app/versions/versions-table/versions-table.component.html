@@ -1,0 +1,26 @@
+<mat-card>
+	<mat-card-title>
+		Details
+	</mat-card-title>
+	<mat-card-content>
+		<mat-table #table [dataSource]="versionsDataSource">
+			<ng-container matColumnDef="version">
+				<mat-header-cell *matHeaderCellDef>Version</mat-header-cell>
+				<mat-cell *matCellDef="let row;"> {{row.version}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="count">
+				<mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
+				<mat-cell *matCellDef="let row;"> {{row.count.toLocaleString("fr-FR")}}</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="percent">
+				<mat-header-cell *matHeaderCellDef>Percent</mat-header-cell>
+				<mat-cell *matCellDef="let row;"> {{row.percent.toFixed(1)}}</mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+	</mat-card-content>
+</mat-card>

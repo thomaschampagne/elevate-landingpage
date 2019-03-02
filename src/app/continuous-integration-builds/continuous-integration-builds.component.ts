@@ -130,9 +130,11 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 		this.dataSource.sort = this.matSort;
 
 		// Fetch from bitbucket api
-		const httpHeaders: HttpHeaders = new HttpHeaders({
-			"Content-Type": "application/json",
-		});
+		const httpHeaders: HttpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		httpHeaders.set("Cache-Control", "no-cache");
+		httpHeaders.set("Cache-Control", "no-store");
+		httpHeaders.set("Cache-Control", "max-age=0");
 
 		const subscription = this.httpClient.get(ContinuousIntegrationBuildsComponent.LAST_100_CI_BUILDS_URL,
 			{headers: httpHeaders}).subscribe((response: BitBucketApi.Response) => {

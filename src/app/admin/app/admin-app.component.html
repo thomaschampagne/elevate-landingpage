@@ -1,0 +1,54 @@
+<mat-sidenav-container>
+	<mat-toolbar>
+		<button mat-icon-button (click)="sideNav.open()">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<span>{{title}}</span>
+		<span class="toolbar-spacer"></span>
+		<button mat-icon-button [matMenuTriggerFor]="menu">
+			<mat-icon>more_vert</mat-icon>
+		</button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item (click)="logout()">Logout</button>
+			<button mat-menu-item (click)="about()">About</button>
+		</mat-menu>
+	</mat-toolbar>
+	<mat-sidenav #sideNav class="sidenav-content">
+		<mat-nav-list>
+			<mat-list-item [routerLink]="['dashboard']" routerLinkActive="active" (click)="sideNav.close()">
+				<button mat-icon-button>
+					<mat-icon>dashboard</mat-icon>
+					Dashboard
+				</button>
+			</mat-list-item>
+			<mat-list-item [routerLink]="['versions']" routerLinkActive="active" (click)="sideNav.close()">
+				<button mat-icon-button>
+					<mat-icon>system_update</mat-icon>
+					Versions
+				</button>
+			</mat-list-item>
+			<mat-list-item [routerLink]="['audience']" routerLinkActive="active" (click)="sideNav.close()">
+				<button mat-icon-button>
+					<mat-icon>people</mat-icon>
+					Audience
+				</button>
+			</mat-list-item>
+			<mat-list-item [routerLink]="['pros']" routerLinkActive="active" (click)="sideNav.close()">
+				<button mat-icon-button>
+					<mat-icon>stars</mat-icon>
+					Pros
+				</button>
+			</mat-list-item>
+			<!--<mat-list-item [routerLink]="['athleteSearch']" routerLinkActive="active" (click)="sideNav.close()">-->
+			<!--<button mat-icon-button>-->
+			<!--<mat-icon>search</mat-icon>-->
+			<!--Athlete Search-->
+			<!--</button>-->
+			<!--</mat-list-item>-->
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<router-outlet></router-outlet>
+</mat-sidenav-container>
+
+

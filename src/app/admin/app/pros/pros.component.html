@@ -1,0 +1,16 @@
+<mat-card>
+	<mat-card-title>
+		Total of {{pros.length}}
+	</mat-card-title>
+	<mat-card-content>
+		<mat-list>
+			<mat-list-item *ngFor="let pro of pros;" (click)="onClick(pro)">
+				<span matLine> {{pro.name}} </span>
+				<p matLine>
+					<i>On {{pro.lastSeen | date}}</i>
+				</p>
+				<mat-divider></mat-divider>
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>

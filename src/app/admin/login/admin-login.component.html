@@ -1,0 +1,19 @@
+<form ngForm (ngSubmit)="onLogin(login.value, password.value)">
+	<div>
+		<mat-form-field>
+			<input matInput autocomplete="login" placeholder="Login" #login required/>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<input matInput autocomplete="password" placeholder="Password" type="password" #password required/>
+		</mat-form-field>
+	</div>
+	<div>
+		<button mat-stroked-button type="submit">Abracadabra</button>
+	</div>
+	<div>
+		<i class="mat-caption">Good luck to hack this...<br/>Trillions of trillions of centuries are required to pass
+			this door using brute force!</i>
+	</div>
+</form>

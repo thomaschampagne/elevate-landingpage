@@ -21,3 +21,18 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
 	transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
 }
+
+.logo {
+
+	@media screen and (orientation: landscape) {
+		object {
+			display: none;
+		}
+	}
+
+	@media screen and (orientation: portrait) {
+		object {
+			height: 45vw;
+		}
+	}
+}

@@ -5,14 +5,17 @@ import {
 	MatDialogModule,
 	MatIconModule,
 	MatInputModule,
+	MatListModule,
+	MatMenuModule,
 	MatPaginatorModule,
 	MatProgressBarModule,
 	MatSelectModule,
+	MatSidenavModule,
 	MatSnackBarModule,
 	MatSortModule,
-	MatTableModule
+	MatTableModule,
+	MatToolbarModule
 } from "@angular/material";
-import { PathLocationStrategy } from "@angular/common";
 
 @NgModule({
 	imports: [
@@ -26,7 +29,11 @@ import { PathLocationStrategy } from "@angular/common";
 		MatSortModule,
 		MatSnackBarModule,
 		MatCardModule,
-		MatProgressBarModule
+		MatProgressBarModule,
+		MatMenuModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatListModule
 	],
 	exports: [
 		MatIconModule,
@@ -39,10 +46,11 @@ import { PathLocationStrategy } from "@angular/common";
 		MatSortModule,
 		MatSnackBarModule,
 		MatCardModule,
-		MatProgressBarModule
-	],
-	providers: [
-		PathLocationStrategy
+		MatProgressBarModule,
+		MatMenuModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatListModule
 	],
 	declarations: []
 })

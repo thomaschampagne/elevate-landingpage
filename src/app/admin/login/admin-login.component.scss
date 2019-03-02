@@ -1,0 +1,38 @@
+form {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+form > div {
+	margin-bottom: 15px;
+	margin-left: 40px;
+	margin-right: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
+}
+
+.logo {
+
+	@media screen and (orientation: landscape) {
+		object {
+			height: 15vw;
+		}
+	}
+
+	@media screen and (orientation: portrait) {
+		object {
+			height: 45vw;
+		}
+	}
+}

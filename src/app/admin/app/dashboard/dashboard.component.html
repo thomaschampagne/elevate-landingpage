@@ -1,0 +1,26 @@
+<mat-card>
+	<mat-card-title>{{stats.realTime.count.toLocaleString("fr-FR")}}</mat-card-title>
+	<mat-card-content>
+		Real time athletes using the App !
+	</mat-card-content>
+</mat-card>
+
+<mat-card>
+	<mat-card-title>{{stats.totalCount.toLocaleString("fr-FR")}}</mat-card-title>
+	<mat-card-content>
+		Total athletes
+	</mat-card-content>
+</mat-card>
+<mat-card>
+	<mat-card-title>v{{stats.countByVersions[0].version}}</mat-card-title>
+	<mat-card-content>
+		<div>
+			Is the most used version.
+		</div>
+		<div>
+			With an adoption of <i>{{stats.countByVersions[0].percent.toFixed(0)}}</i>% or
+			<i>{{stats.countByVersions[0].count.toLocaleString("fr-FR")}}</i>
+			athletes.
+		</div>
+	</mat-card-content>
+</mat-card>

@@ -2,18 +2,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
-import { MaterialModule } from "./material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { LandingComponent } from "./landing/landing.component";
 import { OldLandingComponent } from "./old-landing/old-landing.component";
 import { ContinuousIntegrationBuildsComponent } from "./continuous-integration-builds/continuous-integration-builds.component";
-import { FormsModule } from "@angular/forms";
-
-const LANDING_ROUTE = "landing";
-const OLD_LANDING_ROUTE = "stravistix";
-const BUILDS_ROUTE = "builds";
+import { AppRoutes } from "./app-routes";
+import { SharedModule } from "./modules/shared.module";
 
 @NgModule({
 	declarations: [
@@ -25,29 +20,34 @@ const BUILDS_ROUTE = "builds";
 	imports: [
 		BrowserAnimationsModule,
 		BrowserModule,
-		FormsModule,
-		HttpClientModule,
-		MaterialModule,
+		SharedModule,
 		RouterModule.forRoot(
 			[
 				{
-					path: LANDING_ROUTE, component: LandingComponent
+					path: AppRoutes.LANDING, component: LandingComponent
 				},
 				{
-					path: OLD_LANDING_ROUTE, component: OldLandingComponent
+					path: AppRoutes.OLD_LANDING, component: OldLandingComponent
 				},
 				{
-					path: BUILDS_ROUTE, component: ContinuousIntegrationBuildsComponent
+					path: AppRoutes.BUILDS, component: ContinuousIntegrationBuildsComponent
+				},
+				{
+					path: AppRoutes.ADMIN,
+					loadChildren: "./admin/admin.module#AdminModule"
 				},
 				{
 					path: "",
-					redirectTo: LANDING_ROUTE,
+					redirectTo: AppRoutes.LANDING,
 					pathMatch: "full"
 				},
 				{path: "**", component: LandingComponent}
-			], {useHash: true})
+			],
+			{
+				useHash: true
+			}
+		)
 	],
-	providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

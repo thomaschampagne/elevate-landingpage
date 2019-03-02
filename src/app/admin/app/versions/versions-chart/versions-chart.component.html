@@ -1,0 +1,16 @@
+<mat-card>
+	<mat-card-title>
+		Distribution
+	</mat-card-title>
+	<mat-card-content>
+		<div class="chartContainer">
+			<canvas baseChart
+					[data]="chartData"
+					[labels]="labels"
+					[options]="options"
+					[chartType]="chartType"
+					(chartHover)="chartHovered($event)"
+					(chartClick)="chartClicked($event)"></canvas>
+		</div>
+	</mat-card-content>
+</mat-card>

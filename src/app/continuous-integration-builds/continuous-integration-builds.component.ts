@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { MatPaginator, MatSnackBar, MatSort, MatTableDataSource } from "@angular/material";
 import * as _ from "lodash";
+import { ActivatedRoute } from "@angular/router";
 
 declare module BitBucketApi {
 
@@ -117,6 +118,7 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 	public allVersions: string[];
 
 	constructor(public httpClient: HttpClient,
+				public route: ActivatedRoute,
 				public snackBar: MatSnackBar) {
 		this.isLoaded = false;
 		this.allBranches = [];
@@ -130,9 +132,11 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 		this.dataSource.sort = this.matSort;
 
 		// Fetch from bitbucket api
-		const httpHeaders: HttpHeaders = new HttpHeaders({
-			"Content-Type": "application/json",
-		});
+		const httpHeaders: HttpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		httpHeaders.set("Cache-Control", "no-cache");
+		httpHeaders.set("Cache-Control", "no-store");
+		httpHeaders.set("Cache-Control", "max-age=0");
 
 		const subscription = this.httpClient.get(ContinuousIntegrationBuildsComponent.LAST_100_CI_BUILDS_URL,
 			{headers: httpHeaders}).subscribe((response: BitBucketApi.Response) => {
@@ -148,6 +152,28 @@ export class ContinuousIntegrationBuildsComponent implements OnInit {
 			});
 
 			this.dataSource.data = elevateBuildModels;
+
+			const versionQueryParam = this.route.snapshot.queryParams.version;
+
+			if (versionQueryParam) {
+				if (this.allVersions.indexOf(versionQueryParam) !== -1) {
+					this.selectedVersion = versionQueryParam;
+					this.applyFilter();
+				} else {
+					this.snackBar.open("Version " + versionQueryParam + " doesn't exists.");
+				}
+			}
+
+			const branchQueryParam = this.route.snapshot.queryParams.branch;
+
+			if (branchQueryParam) {
+				if (this.allBranches.indexOf(branchQueryParam) !== -1) {
+					this.selectedBranch = branchQueryParam;
+					this.applyFilter();
+				} else {
+					this.snackBar.open("Branch " + branchQueryParam + " doesn't exists.");
+				}
+			}
 
 		}, error => {
 			this.snackBar.open("Whoops an error occured. Come back later...");

@@ -9,13 +9,15 @@ import { OldLandingComponent } from "./old-landing/old-landing.component";
 import { ContinuousIntegrationBuildsComponent } from "./continuous-integration-builds/continuous-integration-builds.component";
 import { AppRoutes } from "./app-routes";
 import { SharedModule } from "./modules/shared.module";
+import { DiscordComponent } from './discord/discord.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LandingComponent,
+		DiscordComponent,
 		OldLandingComponent,
-		ContinuousIntegrationBuildsComponent
+		ContinuousIntegrationBuildsComponent,
 	],
 	imports: [
 		BrowserAnimationsModule,
@@ -25,6 +27,9 @@ import { SharedModule } from "./modules/shared.module";
 			[
 				{
 					path: AppRoutes.LANDING, component: LandingComponent
+				},
+				{
+					path: AppRoutes.DISCORD, component: DiscordComponent
 				},
 				{
 					path: AppRoutes.OLD_LANDING, component: OldLandingComponent

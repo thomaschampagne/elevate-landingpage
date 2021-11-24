@@ -1,4 +1,4 @@
-7FROM node:10-alpine
+FROM node:10-alpine
 WORKDIR /app
 VOLUME /app
 EXPOSE 4200

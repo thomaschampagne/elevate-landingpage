@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class DiscordComponent implements OnInit {
 
-	private static readonly DISCORD_INVITE_LINK = "https://discord.com/invite/W4G4e5guPV";
+	private static readonly DISCORD_INVITE_LINK = "https://discord.com/invite/N6BAVbBpS2";
 
 	constructor() {
 	}
